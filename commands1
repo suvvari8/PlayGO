@@ -1,0 +1,19 @@
+package main
+
+import (
+	"fmt"
+	"os/exec"
+)
+
+func main() {
+	args := []string{"test.cpp", "-o", "test.o"}
+	args = append(args, "--std=c++11")
+	
+	out, err := exec.Command("g++", args...).Output()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	
+	fmt.Printf("Command ran: %s\n", string(out))
+}
